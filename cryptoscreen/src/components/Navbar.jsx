@@ -3,6 +3,12 @@ import { RiCoinsLine } from "react-icons/ri";
 import { FaSearchDollar } from "react-icons/fa";
 
 const Navbar = () => {
+
+  const[input, setInput] = React.useState("");
+  const [filteredCoins, setFilteredCoins] = React.useState([]);
+
+  const searchHandler = (e) => {
+    e.preventDefault();
   return (
     <nav className="flex items-center justify-between bg-transparent border-b border-fuchsia-600/30 shadow-md p-4 pb-6 mt-6 max-w-full px-16">
       <div className="flex items-center gap-2">
@@ -12,7 +18,7 @@ const Navbar = () => {
         </h1>
       </div>
 
-      <form className="flex-1 max-w-2xl mx-4">
+      <form onSubmit={searchHandler} className="flex-1 max-w-2xl mx-4">
         <div className="relative group">
           <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-800/30 to-violet-600/40 rounded-full opacity-0 group-hover:opacity-100 transition duration-1000" />
           <input
