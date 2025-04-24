@@ -8,7 +8,11 @@ const Navbar = () => {
   const [filteredCoins, setFilteredCoins] = React.useState([]);
 
   const searchHandler = (e) => {
-    e.preventDefault();
+    e.preventDefault()
+    setFilteredCoins([])
+    setSearchTerm(input);
+  };
+  
   return (
     <nav className="flex items-center justify-between bg-transparent border-b border-fuchsia-600/30 shadow-md p-4 pb-6 mt-6 max-w-full px-16">
       <div className="flex items-center gap-2">
