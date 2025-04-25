@@ -1,18 +1,23 @@
 import React from "react";
+import { useContext, useState, useEffect } from 'react'
 import { RiCoinsLine } from "react-icons/ri";
 import { FaSearchDollar } from "react-icons/fa";
+import { CryptoContext } from "../context/CryptoContext";
 
 const Navbar = () => {
 
   const[input, setInput] = React.useState("");
   const [filteredCoins, setFilteredCoins] = React.useState([]);
+  const {cryptoList=[],  setSearchTerm} = useContext(CryptoContext);
 
   const searchHandler = (e) => {
     e.preventDefault()
     setFilteredCoins([])
     setSearchTerm(input);
   };
+
   
+
   return (
     <nav className="flex items-center justify-between bg-transparent border-b border-fuchsia-600/30 shadow-md p-4 pb-6 mt-6 max-w-full px-16">
       <div className="flex items-center gap-2">
@@ -28,6 +33,8 @@ const Navbar = () => {
           <input
             type="text"
             placeholder="Search for a coin..."
+            value={input}
+            onChange={inputHandler}
             className="w-full px-6 py-3 bg-transparent border border-fuchsia-600/70 text-white rounded-full focus:outline-none focus:ring-2 focus:ring-fuchsia-600/60 focus:border-transparent backdrop-blur-sm"
           />
           <button
